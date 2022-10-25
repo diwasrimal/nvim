@@ -4,10 +4,26 @@
 
 Latest Neovim v0.8.0 recommended.
 
-## Insallation
 
+## Installation
+
+You might want to make a backup of your existing config first
+```
+mv ~/.config/nvim ~/.config/nvim.old
+```
+
+### Linux/macOS
+```
+git clone -b transparent https://github.com/diwasrimal/Neovim.git ~/.config/nvim
+```
+
+### Windows
+```
+git clone -b transparent https://github.com/diwasrimal/Neovim.git C:\Users\Administrator\AppData\Local\nvim
+```
 Once cloning the repository, open `nvim` and run `:PackerSync`. This will install
 all your required plugins. Run `:checkhealth` to conduct a health check.
+
 
 ## Configuration tree
 ```
