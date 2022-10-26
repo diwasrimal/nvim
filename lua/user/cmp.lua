@@ -135,9 +135,10 @@ cmp.setup ({
 cmp.setup.cmdline(':', {
   sources = {
     { name = 'cmdline', keyword_pattern = [[\!\@<!\w*]] },
+    -- { name = 'path' },
   },
   formatting = {
-    fields = { "abbr" },
+    fields = { "kind", "abbr" },
   },
    -- Map Ctrl - j/k to select up/down
   mapping = {

@@ -47,6 +47,7 @@ return packer.startup(function(use)
   use { "wbthomason/packer.nvim" } -- Have packer manage itself
   use { "numToStr/Comment.nvim" }  -- Comments
   use { "gelguy/wilder.nvim" }     -- Command line ui customization
+  use { "dstein64/vim-startuptime" }     -- Command line ui customization
 
   -- Snippets
   use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
@@ -61,8 +62,8 @@ return packer.startup(function(use)
   use { "hrsh7th/cmp-cmdline" }         -- path completions
 
   -- Telescope
-  --use { "nvim-telescope/telescope.nvim" }
-  --use { "nvim-lua/plenary.nvim" }  -- Useful lua functions used by lots of plugins (telescope requires this)
+  use { "nvim-telescope/telescope.nvim" }
+  use { "nvim-lua/plenary.nvim" }  -- Useful lua functions used by lots of plugins (telescope requires this)
 
   -- Colorscheme
   use { "ellisonleao/gruvbox.nvim" }

@@ -40,8 +40,11 @@ keymap("n", "<leader>qp", "<cmd>:cprev<CR>", opts)
 keymap("n", "<leader>qf", "<cmd>:cfirst<CR>", opts)
 keymap("n", "<leader>ql", "<cmd>:clast<CR>", opts)
 
--- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+-- Faster window manipulation
+keymap("n", "<leader>wH", "<C-w>H", opts)
+keymap("n", "<leader>wJ", "<C-w>J", opts)
+keymap("n", "<leader>wK", "<C-w>K", opts)
+keymap("n", "<leader>wL", "<C-w>L", opts)
 
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
@@ -63,13 +66,13 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Plugins --
 
 -- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts)
+keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fp", "<cmd>Telescope projects<CR>", opts)
+keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
