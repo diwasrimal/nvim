@@ -1,11 +1,11 @@
-require "user.plugins"
-require "user.options"
-require "user.keymaps"
-require "user.autocmds"
-require "user.catppuccin"
-require "user.cmp"
-require "user.comment"
-require "user.mason"
-require "user.lsp"
-require "user.telescope"
---require "user.wilder"
+require("diwas.plugins")
+require("diwas.options")
+require("diwas.keymaps")
+require("diwas.autocmds")
+require("diwas.dracula")
+require("diwas.cmp")
+require("diwas.comment")
+require("diwas.mason")
+require("diwas.lsp")
+require("diwas.telescope")
+require("diwas.treesitter")
