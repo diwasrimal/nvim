@@ -1,7 +1,8 @@
 -- Shorten function name
 local keymap = vim.keymap.set
--- Silent keymap option
-local opts = { silent = true }
+
+local opts = { noremap = true, silent = true }
+local term_opts = { silent = true }
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -23,22 +24,26 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", "<cmd>resize -2<CR>", opts)
+keymap("n", "<C-Down>", "<cmd>resize +2<CR>", opts)
+keymap("n", "<C-Left>", "<cmd>vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", "<cmd>vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
+keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
+
+-- Move text up and down
+-- keymap("v", "J", "<Esc>:m .+1<CR>==gv", opts)
+-- keymap("v", "K", "<Esc>:m .-2<CR>==gv", opts)
 
 -- Quickfix list
-keymap("n", "<leader>qo", "<cmd>:copen<CR>", opts)
-keymap("n", "<leader>qk", "<cmd>:cclose<CR>", opts)
-keymap("n", "<leader>qn", "<cmd>:cnext<CR>", opts)
-keymap("n", "<leader>qp", "<cmd>:cprev<CR>", opts)
-keymap("n", "<leader>qf", "<cmd>:cfirst<CR>", opts)
-keymap("n", "<leader>ql", "<cmd>:clast<CR>", opts)
+keymap("n", "<leader>qo", "<cmd>copen<CR>", opts)
+keymap("n", "<leader>qk", "<cmd>cclose<CR>", opts)
+keymap("n", "<leader>qn", "<cmd>cnext<CR>", opts)
+keymap("n", "<leader>qp", "<cmd>cprev<CR>", opts)
+keymap("n", "<leader>qf", "<cmd>cfirst<CR>", opts)
+keymap("n", "<leader>ql", "<cmd>clast<CR>", opts)
 
 -- Faster window manipulation
 keymap("n", "<leader>wH", "<C-w>H", opts)
@@ -66,16 +71,16 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Plugins --
 
 -- NvimTree
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", "<cmd>Lex 25<CR>", opts)
 
 -- Telescope
-keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts)
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", "<cmd>Telescope projects<CR>", opts)
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
+-- keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts)
+-- keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
+-- keymap("n", "<leader>fp", "<cmd>Telescope projects<CR>", opts)
+-- keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
 
 -- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+-- keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)

@@ -57,23 +57,27 @@ return packer.startup(function(use)
   use { "hrsh7th/nvim-cmp" }         -- Completion menu
   use { "rafamadriz/friendly-snippets" } -- vscode like snippets (https://github.com/L3MON4D3/LuaSnip#add-snippets)
   use { "hrsh7th/cmp-nvim-lsp" }     -- Lsp completion
-  use { "hrsh7th/cmp-buffer" }       -- buffer completions
-  use { "hrsh7th/cmp-path" }         -- path completions
-  use { "hrsh7th/cmp-cmdline" }         -- path completions
+  use { "hrsh7th/cmp-buffer" }       -- Buffer completions
+  use { "hrsh7th/cmp-path" }         -- Path completions
+  use { "hrsh7th/cmp-cmdline" }      -- Command-line completions
+  -- use { "echasnovski/mini.nvim" }    -- Code formatting
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim" }
   use { "nvim-lua/plenary.nvim" }  -- Useful lua functions used by lots of plugins (telescope requires this)
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Colorscheme
   use { "ellisonleao/gruvbox.nvim" }
-  use { "catppuccin/nvim", as = "catppuccin" }
+  use { "Mofiqul/dracula.nvim" }
 
   -- LSP
   use { "neovim/nvim-lspconfig" }               -- enable LSP
   use { "williamboman/mason.nvim" }             -- Have packer manage itself
   use { "williamboman/mason-lspconfig.nvim" }   -- Integrates mason with lspconfig
 
+  -- Treesitter
+  use { "nvim-treesitter/nvim-treesitter" , {run = ":TSUpdate"} }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

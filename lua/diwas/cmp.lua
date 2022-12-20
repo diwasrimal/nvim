@@ -151,5 +151,5 @@ cmp.setup.cmdline(':', {
 })
 
 -- Make the completion menu transparent
-vim.cmd("highlight Pmenu guibg=NONE")
-vim.cmd("highlight PmenuSel guifg=#ff79c6 guibg=NONE")
+-- vim.cmd("highlight Pmenu guibg=NONE")
+-- vim.cmd("highlight PmenuSel guifg=#ff79c6 guibg=NONE")

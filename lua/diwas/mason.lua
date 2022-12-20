@@ -1,4 +1,10 @@
-require("mason").setup({
+local ok, mason = pcall(require, "mason")
+if not ok then
+  print("Mason not found!")
+  return
+end
+
+mason.setup({
   ui = {
     border = { "┌", "─", "┐",	"│", "┘", "─", "└",	"│" },
     icons = {

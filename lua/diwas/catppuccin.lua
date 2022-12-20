@@ -10,4 +10,3 @@ vim.cmd[[ colorscheme catppuccin ]]
 vim.cmd[[ highlight LineNr guifg=#aaaaaa ]]
 vim.cmd[[ highlight CursorLine guibg=#3C3836 ]]
 vim.cmd[[ highlight CursorLineNr guifg=#FAB387 ]]
-
