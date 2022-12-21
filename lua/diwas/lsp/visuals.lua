@@ -5,7 +5,7 @@ M.setup = function ()
   -- Signs for diagnostics
 	local signs = {
 		{ name = "DiagnosticSignError", text = "✘" },
-		{ name = "DiagnosticSignWarn", text = "" },
+		{ name = "DiagnosticSignWarn", text = "" },
 		{ name = "DiagnosticSignHint", text = "ﯦ" },
 		{ name = "DiagnosticSignInfo", text = "" },
   }
