@@ -12,6 +12,8 @@ function DraculaPrettify ()
   vim.cmd("hi TelescopeNormal guibg=NONE")
   vim.cmd("hi TelescopeSelection guifg=#FF79c6 guibg=NONE")
   vim.cmd("hi NormalFloat guibg=NONE")
+  vim.cmd("hi SpecialKey guifg=#ffffff")
+  vim.cmd("hi Search guifg=NONE guibg=#525252")
   vim.cmd("hi DiagnosticVirtualTextWarn guifg=#EBCB8B guibg=#2E3440 gui=italic")
   vim.cmd("hi DiagnosticVirtualTextError guifg=#BF616A guibg=#2E3440 gui=italic")
 end
