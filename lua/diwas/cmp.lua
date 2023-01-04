@@ -10,10 +10,11 @@ local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
   return
 end
+luasnip.config.setup({ enable_autosnippets = true })
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
-local check_backspace = function() 
+local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
@@ -68,21 +69,23 @@ cmp.setup ({
 
   -- key bindings for completion menu
   mapping = {
-    ["<CR>"] = cmp.mapping.confirm { select = true },
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+    -- Confirm selection with 'Return' or 'Ctrl-Return'
+    ["<CR>"] = cmp.mapping.confirm(),
+
+    -- Select next/prev item using tab/s-tab or c-j/c-k
+		["<Tab>"]   = cmp.mapping.select_next_item(),
+		["<C-j>"]   = cmp.mapping.select_next_item(),
+    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    ["<C-k>"]   = cmp.mapping.select_prev_item(),
+
+    -- Scroll documentation
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ["<C-e>"] = cmp.mapping {
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    },
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
+
+    -- Jump or Expand snippets with c-n/c-p
+    ["<C-n>"] = cmp.mapping(function(fallback)
+      if luasnip.expandable() then
+        luasnip.expand({ select = true })
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif check_backspace() then
@@ -94,10 +97,8 @@ cmp.setup ({
       "i",
       "s",
     }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+    ["<C-p>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
@@ -106,6 +107,12 @@ cmp.setup ({
       "i",
       "s",
     }),
+
+    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ["<C-e>"] = cmp.mapping {
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    },
   },
 
   -- Display formats
@@ -150,6 +157,3 @@ cmp.setup.cmdline(':', {
   },
 })
 
--- Make the completion menu transparent
--- vim.cmd("highlight Pmenu guibg=NONE")
--- vim.cmd("highlight PmenuSel guifg=#ff79c6 guibg=NONE")
