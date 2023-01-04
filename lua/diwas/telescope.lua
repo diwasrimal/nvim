@@ -44,15 +44,3 @@ telescope.setup({
 })
 
 telescope.load_extension('fzf')
-
--- Mappings for telescope
-local builtin = require('telescope.builtin')
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<C-p>', builtin.find_files, opts)
-vim.keymap.set('n', '<leader>ff', builtin.git_files, opts)
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, opts)
-vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
-vim.keymap.set('n', '<leader>fs', builtin.spell_suggest, opts)
-vim.keymap.set('n', '<leader>dl', builtin.diagnostics, opts)
-
