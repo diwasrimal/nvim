@@ -7,6 +7,13 @@ local definitions = {
       command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
   },
+  {
+    { "BufWritePost", "BufLeave" },
+    {
+      pattern = os.getenv("HOME") .. "/.local/share/todos.txt",
+      command = ":!kill -SIGRTMIN+6 $(pidof dwmblocks)",
+    },
+  },
 }
 
 for _, entry in ipairs(definitions) do

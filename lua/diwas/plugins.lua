@@ -72,9 +72,9 @@ return packer.startup(function(use)
   use { "Mofiqul/dracula.nvim" }
 
   -- LSP
-  use { "neovim/nvim-lspconfig" }               -- enable LSP
-  use { "williamboman/mason.nvim" }             -- Have packer manage itself
+  use { "williamboman/mason.nvim" }             -- LSP Installer
   use { "williamboman/mason-lspconfig.nvim" }   -- Integrates mason with lspconfig
+  use { "neovim/nvim-lspconfig" }               -- enable LSP
 
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter" , {run = ":TSUpdate"} }

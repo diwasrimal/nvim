@@ -15,6 +15,12 @@ mason.setup({
   }
 })
 
-require("mason-lspconfig").setup({
+local ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not ok then
+  print("mason-lspconfig not found!")
+  return
+end
+
+mason_lspconfig.setup({
   ensure_installed = { "sumneko_lua", "clangd", "pyright" },
 })
