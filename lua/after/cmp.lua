@@ -1,5 +1,3 @@
--- Settings for completion menu
-
 -- Load auto-completion plugins
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
@@ -59,7 +57,6 @@ cmp.setup ({
   },
 
   -- Display formats
-
   formatting = {
     format = function(entry, vim_item)
       if vim.tbl_contains({ 'path' }, entry.source.name) then
@@ -74,7 +71,7 @@ cmp.setup ({
     end,
   },
 
-  -- -- Menu borders
+  -- Menu borders
   -- window = {
   --   completion = { border = { "┌", "─", "┐",	"│", "┘", "─", "└",	"│" } },
   --   documentation = { border = { "┌", "─", "┐",	"│", "┘", "─", "└",	"│" } },

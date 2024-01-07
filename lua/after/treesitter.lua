@@ -1,6 +1,6 @@
-local ok, tsconfig = pcall(require, "nvim-treesitter.configs")
-if not ok then
-  print("Tresitter not found!")
+local ok1, tsconfig = pcall(require, "nvim-treesitter.configs")
+if not ok1 then
+    return
 end
 
 tsconfig.setup({
@@ -13,12 +13,9 @@ tsconfig.setup({
     },
 })
 
-local ok, tscontext = pcall(require, "treesitter-context")
-if not ok then
-    return
+local ok2, tscontext = pcall(require, "treesitter-context")
+if ok2 then
+    tscontext.setup({
+        max_lines = 6,
+    })
 end
-
-tscontext.setup({
-    max_lines = 6;
-})
-

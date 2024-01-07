@@ -1,29 +1,15 @@
-local definitions = {
-  {
-    { "BufWinEnter", "BufRead", "BufNewFile" },
-    {
-      group = "_format_options",
-      pattern = "*",
-      command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
-    },
-  },
-  {
-    { "BufWritePost", "BufLeave" },
-    {
-      pattern = os.getenv("HOME") .. "/.local/share/todos.txt",
-      command = ":!kill -SIGRTMIN+6 $(pidof dwmblocks)",
-    },
-  },
-}
+-- Put autocommands here
 
-for _, entry in ipairs(definitions) do
-  local event = entry[1]
-  local opts = entry[2]
-  if type(opts.group) == "string" and opts.group ~= "" then
-    local exists, _ = pcall(vim.api.nvim_get_autocmds, { group = opts.group })
-    if not exists then
-      vim.api.nvim_create_augroup(opts.group, {})
-    end
-  end
-  vim.api.nvim_create_autocmd(event, opts)
-end
+vim.cmd[[ autocmd FileType markdown,gitcommit set spell ]]
+--vim.cmd[[ autocmd FileType javascriptreact,typescriptreact,html set sw=2 ts=2 ]]
+
+-- -- Highlight on yank
+-- local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+--   callback = function()
+--     vim.highlight.on_yank()
+--   end,
+--   group = highlight_group,
+--   pattern = '*',
+-- })
+
