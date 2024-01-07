@@ -24,5 +24,3 @@ dracula.setup({
 
 vim.cmd("colorscheme dracula")
 DraculaPrettify()
-
-
