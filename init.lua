@@ -1,17 +1,21 @@
--- Main config
-require("core.plugins")
+-- Core configs
 require("core.options")
 require("core.keymaps")
-require("core.autocmds")
+require("core.autocommands")
 
--- Plugin config
--- require("after.dracula")
-require("after.monokai")
-require("after.autopairs")
-require("after.indentline")
-require("after.treesitter")
-require("after.cmp")
-require("after.comment")
-require("after.telescope")
-require("after.nvimtree")
-require("after.lspconfig")
+-- Plugin management using lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    print("Installing lazy.nvim, close and reopen neovim!")
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup("plugins")
+vim.cmd[[colorscheme monokai-pro]]
