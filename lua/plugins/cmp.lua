@@ -14,7 +14,6 @@ return {
         local ok, luasnip = pcall(require, "luasnip")
         if not ok then return end
 
-        -- Avoids weird tab jumps
         luasnip.config.set_config({
             region_check_events = 'InsertEnter',
             delete_check_events = 'InsertLeave'

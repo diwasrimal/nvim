@@ -17,7 +17,9 @@
   "nvim-lspconfig": { "branch": "master", "commit": "c932a56bf25167b1e88d2a1ebe35bb774b41019a" },
   "nvim-treesitter": { "branch": "master", "commit": "63ca90eaa3ce1cc668add8828a9e3d6728dbbdf1" },
   "nvim-treesitter-context": { "branch": "master", "commit": "b8d1ffe58a88e0356da56b167373e89c4579ce15" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "b7a0bfa3e93697ca5b61b15df633404bf8f45883" },
   "nvim-web-devicons": { "branch": "master", "commit": "4adea17610d140a99c313e3f79a9dc01825d59ae" },
   "tokyonight.nvim": { "branch": "main", "commit": "610179f7f12db3d08540b6cc61434db2eaecbcff" },
-  "trim.nvim": { "branch": "master", "commit": "17a16c532a0ba1528fe9a4d79015b2843734502d" }
+  "trim.nvim": { "branch": "master", "commit": "17a16c532a0ba1528fe9a4d79015b2843734502d" },
+  "vim-visual-multi": { "branch": "master", "commit": "fe1ec7e430013b83c8c2dee85ae496251b71e253" }
 }
