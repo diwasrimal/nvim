@@ -16,5 +16,6 @@ return {
     vim.keymap.set('n', '<leader>fD', fzf.diagnostics_workspace, {})
     vim.keymap.set('n', '<leader>fs', fzf.lsp_document_symbols, {})
     vim.keymap.set('n', '<leader>fS', fzf.lsp_workspace_symbols, {})
+    vim.keymap.set('n', '<leader>fa', fzf.lsp_code_actions, {})
   end
 }

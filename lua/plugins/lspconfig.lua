@@ -19,9 +19,9 @@ return {
         -- Specify servers and settings here
         local servers = {
             "clangd",
-            -- "gopls",
+            "gopls",
             -- "jdtls",
-            -- "rust-analyzer",
+            "rust_analyzer",
             -- "tsserver",
             -- "emmet_language_server",
             -- "pyright"
@@ -30,9 +30,9 @@ return {
             gopls = {
                 completeUnimported = true,
                 usePlaceholders = true,
-                -- analyses = {
-                --     unusedparams = true,
-                -- },
+                analyses = {
+                    unusedparams = true,
+                },
             },
             -- ...
         }
@@ -48,8 +48,8 @@ return {
             vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
-            vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, bufopts)
-            vim.keymap.set("n", "<leader>dl", vim.diagnostic.setqflist, bufopts)
+            vim.keymap.set("n", "<leader>ls", vim.diagnostic.open_float, bufopts)
+            vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist, bufopts)
             vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, bufopts)
             vim.keymap.set({ "n", "v" }, "<leader>lf", function()
                 vim.lsp.buf.format({ async = true })
