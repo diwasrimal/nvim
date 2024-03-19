@@ -1,7 +1,9 @@
 return {
     'neovim/nvim-lspconfig',
+    dependencies = {"williamboman/mason.nvim"},
     config = function()
         local lspconfig = require("lspconfig")
+        require("mason").setup()
 
         local capabilities = nil
         local ok, cmplsp = pcall(require, "cmp_nvim_lsp")
@@ -20,11 +22,13 @@ return {
         local servers = {
             "clangd",
             "gopls",
-            -- "jdtls",
             "rust_analyzer",
-            -- "tsserver",
-            -- "emmet_language_server",
-            -- "pyright"
+            "tsserver",
+            "emmet_language_server",
+            "pyright",
+            "tailwindcss",
+            "astro",
+            -- "jdtls",
         }
         local settings = {
             gopls = {
@@ -34,6 +38,9 @@ return {
                     unusedparams = true,
                 },
             },
+            clangd = {
+                cmd = "~/.local/share/nvim/mason/bin/clangd",   -- dont use /usr/bin/clangd that comes with xcode cli tools
+            }
             -- ...
         }
 
@@ -41,7 +48,7 @@ return {
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-            vim.keymap.set("n", "gpd", vim.lsp.buf.type_definition, bufopts)
+            vim.keymap.set("n", "gtd", vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
             vim.keymap.set("n", "gR", vim.lsp.buf.references, bufopts)

@@ -1,4 +1,4 @@
-vim.cmd[[ autocmd FileType markdown,gitcommit set spell ]]
+vim.cmd[[ autocmd FileType markdown,gitcommit setlocal spell ]]
 --vim.cmd[[ autocmd FileType javascriptreact,typescriptreact,html set sw=2 ts=2 ]]
 
 -- Highlight on yank
