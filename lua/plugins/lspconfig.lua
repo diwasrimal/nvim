@@ -28,7 +28,7 @@ return {
             "pyright",
             "tailwindcss",
             "astro",
-            -- "jdtls",
+            "jdtls",
         }
         local settings = {
             gopls = {
