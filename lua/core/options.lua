@@ -23,8 +23,9 @@ vim.o.wrap = false
 vim.o.scrolloff = 8
 vim.g.netrw_banner = 0
 vim.o.guicursor = ""
+vim.g.editorconfig = false
 
 -- disable netrw at the very start of your init.lua
 -- for nvim tree
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

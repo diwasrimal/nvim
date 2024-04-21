@@ -1,6 +1,10 @@
 return {
     'neovim/nvim-lspconfig',
-    dependencies = {"williamboman/mason.nvim"},
+    dependencies = {
+        "williamboman/mason.nvim",
+        "nvimtools/none-ls.nvim",
+        "nvim-lua/plenary.nvim", -- for none-ls
+    },
     config = function()
         local lspconfig = require("lspconfig")
         require("mason").setup()
@@ -26,9 +30,9 @@ return {
             "tsserver",
             "emmet_language_server",
             "pyright",
-            "tailwindcss",
-            "astro",
-            "jdtls",
+            -- "tailwindcss",
+            -- "astro",
+            -- "jdtls",
         }
         local settings = {
             gopls = {
@@ -37,6 +41,15 @@ return {
                 analyses = {
                     unusedparams = true,
                 },
+                -- hints = {
+                --     assignVariableTypes = true,
+                --     compositeLiteralFields = true,
+                --     compositeLiteralTypes = true,
+                --     constantValues = true,
+                --     functionTypeParameters = true,
+                --     parameterNames = true,
+                --     rangeVariableTypes = true,
+                -- }
             },
             clangd = {
                 cmd = "~/.local/share/nvim/mason/bin/clangd",   -- dont use /usr/bin/clangd that comes with xcode cli tools
@@ -48,6 +61,7 @@ return {
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+            vim.keymap.set("n", "gs", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", bufopts) -- goto definitionin split view
             vim.keymap.set("n", "gtd", vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
@@ -58,10 +72,12 @@ return {
             vim.keymap.set("n", "<leader>ls", vim.diagnostic.open_float, bufopts)
             vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist, bufopts)
             vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, bufopts)
-            vim.keymap.set({ "n", "v" }, "<leader>lf", function()
-                vim.lsp.buf.format({ async = true })
-            end, bufopts)
         end
+
+        -- This is kept seperate so that lsp and null ls formatter don't format twice
+        vim.keymap.set({ "n", "v" }, "<leader>lf", function()
+            vim.lsp.buf.format({ async = true })
+        end, bufopts)
 
         for _, server in ipairs(servers) do
             lspconfig[server].setup({
@@ -70,5 +86,16 @@ return {
                 settings = settings[server],
             })
         end
+
+        -- Setup for none ls
+        local null_ls = require("null-ls")
+        null_ls.setup({
+            sources = {
+                null_ls.builtins.formatting.prettier,
+                -- null_ls.builtins.formatting.black,
+                -- null_ls.builtins.formatting.goimports,
+            },
+            on_attach = on_attach,
+        })
     end,
 }
