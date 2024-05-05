@@ -13,7 +13,7 @@ return {
             auto_install = true,
             ignore_install = { "markdown", "diff" },
             highlight = { enable = true, },
-            indent = { enable = true, },
+			indent = { enable = true, },
             textobjects = {
                 select = {
                     enable = true,

@@ -1,5 +1,5 @@
 vim.cmd[[ autocmd FileType markdown,gitcommit setlocal spell ]]
-vim.cmd[[ autocmd FileType javascriptreact,typescriptreact,html set sw=2 ts=2 ]]
+-- vim.cmd[[ autocmd FileType javascriptreact,typescriptreact,html setlocal sw=2 ts=2 ]]
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

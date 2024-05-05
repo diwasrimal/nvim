@@ -61,7 +61,7 @@ return {
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-            vim.keymap.set("n", "gs", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", bufopts) -- goto definitionin split view
+            vim.keymap.set("n", "gs", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", bufopts) -- goto definition in split view
             vim.keymap.set("n", "gtd", vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
@@ -92,7 +92,7 @@ return {
         null_ls.setup({
             sources = {
                 null_ls.builtins.formatting.prettier,
-                -- null_ls.builtins.formatting.black,
+                null_ls.builtins.formatting.black,
                 -- null_ls.builtins.formatting.goimports,
             },
             on_attach = on_attach,

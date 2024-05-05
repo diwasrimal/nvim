@@ -10,6 +10,7 @@ return {
         'saadparwaiz1/cmp_luasnip',
         'rafamadriz/friendly-snippets',
     },
+
     config = function()
         local ok, luasnip = pcall(require, "luasnip")
         if not ok then return end
@@ -50,15 +51,16 @@ return {
                 { name = 'buffer' },
             }),
 
-            preselect = cmp.PreselectMode.None,
+            -- preselect = cmp.PreselectMode.None,
             mapping = {
                 ['<C-b>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<C-e>'] = cmp.mapping.abort(),
 
-                -- Safely select entries with return key
-                ['<CR>'] = cmp.mapping.confirm(),
+                -- Quickly accept top most entry with tab, or safely choose a option with ctrl y
+                ['<Tab>'] = cmp.mapping.confirm({select = true}),
+                ['<C-y>'] = cmp.mapping.confirm(),
 
                 -- Ctrl n/p to select next/prev item on list
                 -- Ctrl n also triggers completion menu
@@ -77,8 +79,8 @@ return {
                     end
                 end),
 
-                -- Tab will jump snippet forward
-                ["<Tab>"] = cmp.mapping(function(fallback)
+                -- ctrl j will jump snippet forward
+                ["<C-j>"] = cmp.mapping(function(fallback)
                     if luasnip.jumpable(1) then
                         luasnip.jump(1)
                     else
@@ -86,8 +88,8 @@ return {
                     end
                 end, { "i", "s" }),
 
-                -- Shift tab always jumps back from snippet
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                -- ctrl k always jumps back from snippet
+                ["<C-k>"] = cmp.mapping(function(fallback)
                     if luasnip.jumpable(-1) then
                         luasnip.jump(-1)
                     else
