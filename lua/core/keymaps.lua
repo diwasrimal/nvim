@@ -23,6 +23,9 @@ vim.keymap.set("n", "[t", "<cmd>tabprev<cr>")
 vim.keymap.set("n", "]q", "<cmd>cnext<cr>")
 vim.keymap.set("n", "[q", "<cmd>cprev<cr>")
 
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>")
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>")
+
 -- Move text up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
