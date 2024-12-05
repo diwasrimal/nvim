@@ -38,5 +38,6 @@ local lazy_opts = {
 -- Load plugins listed in ./lua/plugins
 require("lazy").setup("plugins", lazy_opts)
 
-vim.cmd[[colorscheme gruvbox-material]]
+-- vim.cmd[[colorscheme gruvbox-material]]
+require('onedark').load()
 

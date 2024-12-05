@@ -34,6 +34,10 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("v", "<leader>s", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- Easier scroll
+vim.keymap.set("n", "<C-j>", "<C-e>")
+vim.keymap.set("n", "<C-k>", "<C-y>")
+
 vim.keymap.set("n",  "<leader>t", function()
     local cmd = vim.fn.filereadable("todo.txt") == 1 and ":e todo.txt" or ":echo 'no todo.txt!'"
     vim.cmd(cmd)

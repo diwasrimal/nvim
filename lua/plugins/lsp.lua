@@ -4,10 +4,13 @@ return {
         "williamboman/mason.nvim",
         "nvimtools/none-ls.nvim",
         "nvim-lua/plenary.nvim", -- for none-ls
+		-- "lukas-reineke/lsp-format.nvim"
     },
     config = function()
         local lspconfig = require("lspconfig")
         require("mason").setup()
+		-- local lspformat = require("lsp-format")
+		-- lspformat.setup()
 
         local capabilities = nil
         local ok, cmplsp = pcall(require, "cmp_nvim_lsp")
@@ -58,6 +61,7 @@ return {
         }
 
         local on_attach = function(client, bufnr)
+			-- lspformat.on_attach(client, bufnr)
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)

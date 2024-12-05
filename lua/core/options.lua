@@ -16,9 +16,14 @@ vim.o.cursorline = true
 vim.o.wrap = false
 vim.o.scrolloff = 8
 vim.o.signcolumn = 'yes'
-vim.o.termguicolors = true
+vim.o.pumheight = 20
+--vim.o.pumblend = 10
+--vim.o.termguicolors = true
 
 vim.o.guicursor = ""
 
 vim.g.editorconfig = false
 -- vim.g.EditorConfig_exclude_patterns = {'/opt/homebrew'}
+
+-- see help provider-python, help python-virtualenv
+vim.g.python3_host_prog = "/Users/lufy/Developer/tools/py3nvim-venv/bin/python" 
