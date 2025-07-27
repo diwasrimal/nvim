@@ -7,8 +7,9 @@ return {
     local fzf = require("fzf-lua")
     vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua<cr>', {})
     vim.keymap.set('n', '<c-p>', fzf.files, {})
-    vim.keymap.set('n', '<leader>fg', fzf.git_files, {})
+    vim.keymap.set('n', '<c-\\>', fzf.buffers, {})
     vim.keymap.set('n', '<leader>fb', fzf.buffers, {})
+    vim.keymap.set('n', '<leader>fg', fzf.git_files, {})
     vim.keymap.set('n', '<leader>fo', fzf.oldfiles, {})
     vim.keymap.set('n', '<leader>fg', fzf.live_grep, {})
     vim.keymap.set('n', '<leader>fh', fzf.help_tags, {})
@@ -17,5 +18,6 @@ return {
     vim.keymap.set('n', '<leader>fs', fzf.lsp_document_symbols, {})
     vim.keymap.set('n', '<leader>fS', fzf.lsp_workspace_symbols, {})
     vim.keymap.set('n', '<leader>fa', fzf.lsp_code_actions, {})
+    vim.keymap.set('n', '<leader>fr', fzf.resume, {})
   end
 }

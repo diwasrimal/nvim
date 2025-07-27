@@ -41,3 +41,4 @@ require("lazy").setup("plugins", lazy_opts)
 -- vim.cmd[[colorscheme gruvbox-material]]
 require('onedark').load()
 
+require("after.highlight")

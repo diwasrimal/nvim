@@ -19,20 +19,32 @@ return {
         end
 
         -- Diagnostic icons shown in sign column
-        local signs = { Error = "✘", Warn = "", Hint = "󰛨", Info = "" }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
+        -- local signs = { Error = "✘", Warn = "", Hint = "󰛨", Info = "" }
+        -- for type, icon in pairs(signs) do
+        --     local hl = "DiagnosticSign" .. type
+        --     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+        -- end
+
+		vim.diagnostic.config({
+			signs = { 
+				text = { 
+					[vim.diagnostic.severity.ERROR] = '✘',
+					[vim.diagnostic.severity.WARN] = '',
+					[vim.diagnostic.severity.HINT] = '󰛨',
+					[vim.diagnostic.severity.INFO] = '',
+				}
+			}
+		})
 
         -- Specify servers and settings here
         local servers = {
-            "clangd",
-            "gopls",
-            "rust_analyzer",
-            "tsserver",
-            "emmet_language_server",
-            "pyright",
+             "clangd",
+             "gopls",
+             "rust_analyzer",
+             -- "ts_ls",
+			 "vtsls",
+             "emmet_language_server",
+            -- "pyright",
             -- "tailwindcss",
             -- "astro",
             -- "jdtls",
@@ -66,16 +78,16 @@ return {
             vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
             vim.keymap.set("n", "gs", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", bufopts) -- goto definition in split view
-            vim.keymap.set("n", "gtd", vim.lsp.buf.type_definition, bufopts)
+            vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, bufopts)
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
             vim.keymap.set("n", "gR", vim.lsp.buf.references, bufopts)
             vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
-            vim.keymap.set("n", "<leader>ls", vim.diagnostic.open_float, bufopts)
+            vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, bufopts)
             vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist, bufopts)
-            vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, bufopts)
+            vim.keymap.set({ "n", "v", "x" }, "<leader>a", vim.lsp.buf.code_action, bufopts)
         end
 
         -- This is kept seperate so that lsp and null ls formatter don't format twice
